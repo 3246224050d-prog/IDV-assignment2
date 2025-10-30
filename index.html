@@ -1,14 +1,603 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(255,255,255);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 2.5rem;
+        }
+        
+        .description {
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 20px 15px;
+            text-align: center;
+            border: 1px solid #e1e1e1;
+        }
+        
+        th {
+            background: linear-gradient(to bottom, #3498db, #5dade2);
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .svg-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .svg-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .svg-container svg {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        /* 效果样式 */
+        .mirrored {
+            transform: scaleX(-1);
+        }
+        
+        .rotated {
+            transform: rotate(180deg);
+        }
+        
+        .squeezed {
+            transform: scaleY(0.5);
+        }
+        
+        .grayscale {
+            filter: grayscale(100%);
+        }
+        
+        .svg-title {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        @media (max-width: 1200px) {
+            .svg-container {
+                width: 100px;
+                height: 100px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .svg-container {
+                width: 80px;
+                height: 80px;
+            }
+            
+            th, td {
+                padding: 15px 10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .svg-container {
+                width: 70px;
+                height: 70px;
+            }
+            
+            th, td {
+                padding: 10px 5px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <svg width="1000" height="1000">
-        <g fill="#0f0" stroke="#f00">
-  <circle cx="500" cy="500" r="300"></circle>
-  <rect class ="rect" x="700" y="100" width="100" height="100"></rect>
-</g>
-    </svg>
+    <div class="container">
+        <header>
+            <h1>Assignment 2</h1>
+        </header>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>image name</th>
+                        <th>original</th>
+                        <th>left-right mirrored</th>
+                        <th>rotated 180 degree</th>
+                        <th>vertically squeezed by 50%</th>
+                        <th>grayscale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 第1行 -->
+                    <tr>
+                        <td class="svg-title">diagonally cut rectangle</td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                    <polygon points="20,20 80,30 70,80 30,70" fill="#FF6B6B" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="mirrored">
+                                    <polygon points="20,20 80,30 70,80 30,70" fill="#FF6B6B" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="rotated">
+                                    <polygon points="20,20 80,30 70,80 30,70" fill="#FF6B6B" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="squeezed">
+                                    <polygon points="20,20 80,30 70,80 30,70" fill="#FF6B6B" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="grayscale">
+                                    <polygon points="20,20 80,30 70,80 30,70" fill="#FF6B6B" />
+                                </svg>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- 第2行 -->
+                    <tr>
+                        <td class="svg-title">scalene triangle</td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                    <polygon points="50,20 80,70 20,60" fill="#4ECDC4" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="mirrored">
+                                    <polygon points="50,20 80,70 20,60" fill="#4ECDC4" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="rotated">
+                                    <polygon points="50,20 80,70 20,60" fill="#4ECDC4" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="squeezed">
+                                    <polygon points="50,20 80,70 20,60" fill="#4ECDC4" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="grayscale">
+                                    <polygon points="50,20 80,70 20,60" fill="#4ECDC4" />
+                                </svg>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- 第3行 -->
+                    <tr>
+                        <td class="svg-title">offset circle</td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="60" cy="40" r="30" fill="#FFE66D" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="mirrored">
+                                    <circle cx="60" cy="40" r="30" fill="#FFE66D" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="rotated">
+                                    <circle cx="60" cy="40" r="30" fill="#FFE66D" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="squeezed">
+                                    <circle cx="60" cy="40" r="30" fill="#FFE66D" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="grayscale">
+                                    <circle cx="60" cy="40" r="30" fill="#FFE66D" />
+                                </svg>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- 第4行 -->
+                    <tr>
+                        <td class="svg-title">L-form</td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="20" y="20" width="40" height="20" fill="#1A535C" />
+                                    <rect x="20" y="40" width="20" height="40" fill="#1A535C" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="mirrored">
+                                    <rect x="20" y="20" width="40" height="20" fill="#1A535C" />
+                                    <rect x="20" y="40" width="20" height="40" fill="#1A535C" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="rotated">
+                                    <rect x="20" y="20" width="40" height="20" fill="#1A535C" />
+                                    <rect x="20" y="40" width="20" height="40" fill="#1A535C" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="squeezed">
+                                    <rect x="20" y="20" width="40" height="20" fill="#1A535C" />
+                                    <rect x="20" y="40" width="20" height="40" fill="#1A535C" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="grayscale">
+                                    <rect x="20" y="20" width="40" height="20" fill="#1A535C" />
+                                    <rect x="20" y="40" width="20" height="40" fill="#1A535C" />
+                                </svg>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- 第5行 -->
+                    <tr>
+                        <td class="svg-title">arched door</td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M30,50 A20,20 0 0,1 70,50 L70,80 L30,80 Z" fill="#FF9A8B" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="mirrored">
+                                    <path d="M30,50 A20,20 0 0,1 70,50 L70,80 L30,80 Z" fill="#FF9A8B" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="rotated">
+                                    <path d="M30,50 A20,20 0 0,1 70,50 L70,80 L30,80 Z" fill="#FF9A8B" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="squeezed">
+                                    <path d="M30,50 A20,20 0 0,1 70,50 L70,80 L30,80 Z" fill="#FF9A8B" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="grayscale">
+                                    <path d="M30,50 A20,20 0 0,1 70,50 L70,80 L30,80 Z" fill="#FF9A8B" />
+                                </svg>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- 第6行 -->
+                    <tr>
+                        <td class="svg-title">quadrangle</td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                    <polygon points="20,20 80,20 60,80 20,80" fill="#3DCCC7" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="mirrored">
+                                    <polygon points="20,20 80,20 60,80 20,80" fill="#3DCCC7" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="rotated">
+                                    <polygon points="20,20 80,20 60,80 20,80" fill="#3DCCC7" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="squeezed">
+                                    <polygon points="20,20 80,20 60,80 20,80" fill="#3DCCC7" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="grayscale">
+                                    <polygon points="20,20 80,20 60,80 20,80" fill="#3DCCC7" />
+                                </svg>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- 第7行 -->
+                    <tr>
+                        <td class="svg-title">stair</td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="20" y="20" width="20" height="60" fill="#6A0572" />
+                                    <rect x="40" y="40" width="20" height="40" fill="#6A0572" />
+                                    <rect x="60" y="60" width="20" height="20" fill="#6A0572" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="mirrored">
+                                    <rect x="20" y="20" width="20" height="60" fill="#6A0572" />
+                                    <rect x="40" y="40" width="20" height="40" fill="#6A0572" />
+                                    <rect x="60" y="60" width="20" height="20" fill="#6A0572" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="rotated">
+                                    <rect x="20" y="20" width="20" height="60" fill="#6A0572" />
+                                    <rect x="40" y="40" width="20" height="40" fill="#6A0572" />
+                                    <rect x="60" y="60" width="20" height="20" fill="#6A0572" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="squeezed">
+                                    <rect x="20" y="20" width="20" height="60" fill="#6A0572" />
+                                    <rect x="40" y="40" width="20" height="40" fill="#6A0572" />
+                                    <rect x="60" y="60" width="20" height="20" fill="#6A0572" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="grayscale">
+                                    <rect x="20" y="20" width="20" height="60" fill="#6A0572" />
+                                    <rect x="40" y="40" width="20" height="40" fill="#6A0572" />
+                                    <rect x="60" y="60" width="20" height="20" fill="#6A0572" />
+                                </svg>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- 第8行 -->
+                    <tr>
+                        <td class="svg-title">arrows</td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                    <polygon points="30,40 70,40 70,20 90,50 70,80 70,60 30,60" fill="#AB83A1" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="mirrored">
+                                    <polygon points="30,40 70,40 70,20 90,50 70,80 70,60 30,60" fill="#AB83A1" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="rotated">
+                                    <polygon points="30,40 70,40 70,20 90,50 70,80 70,60 30,60" fill="#AB83A1" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="squeezed">
+                                    <polygon points="30,40 70,40 70,20 90,50 70,80 70,60 30,60" fill="#AB83A1" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="grayscale">
+                                    <polygon points="30,40 70,40 70,20 90,50 70,80 70,60 30,60" fill="#AB83A1" />
+                                </svg>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- 第9行 -->
+                    <tr>
+                        <td class="svg-title">wave</td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20,50 Q40,30 60,50 T100,50 L100,80 L20,80 Z" fill="#FFD166" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="mirrored">
+                                    <path d="M20,50 Q40,30 60,50 T100,50 L100,80 L20,80 Z" fill="#FFD166" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="rotated">
+                                    <path d="M20,50 Q40,30 60,50 T100,50 L100,80 L20,80 Z" fill="#FFD166" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="squeezed">
+                                    <path d="M20,50 Q40,30 60,50 T100,50 L100,80 L20,80 Z" fill="#FFD166" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="grayscale">
+                                    <path d="M20,50 Q40,30 60,50 T100,50 L100,80 L20,80 Z" fill="#FFD166" />
+                                </svg>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- 第10行 -->
+                    <tr>
+                        <td class="svg-title">asymmetric pentagon</td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                    <polygon points="50,20 80,40 70,80 30,70 20,40" fill="#EF476F" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="mirrored">
+                                    <polygon points="50,20 80,40 70,80 30,70 20,40" fill="#EF476F" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="rotated">
+                                    <polygon points="50,20 80,40 70,80 30,70 20,40" fill="#EF476F" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="squeezed">
+                                    <polygon points="50,20 80,40 70,80 30,70 20,40" fill="#EF476F" />
+                                </svg>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="svg-container">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="grayscale">
+                                    <polygon points="50,20 80,40 70,80 30,70 20,40" fill="#EF476F" />
+                                </svg>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 </html>
